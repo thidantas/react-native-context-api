@@ -1,10 +1,10 @@
+import { useContext } from "react";
 import { Text, View, Switch } from "react-native";
-import { estilos } from "./estilos";
-import { useState, useContext } from "react";
 import { TemaContext } from "../../contexts/TemaContext";
+import { estilos } from "./estilos";
 
 export default function Configuracao({ navigation }) {
-  const { temaAtual, setTemaAtual, temaEscolhido, salvarTemaNoDispositivo } =
+  const { temaAtual, temaEscolhido, salvarTemaNoDispositivo } =
     useContext(TemaContext);
 
   const estilo = estilos(temaEscolhido);

@@ -15,14 +15,14 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
+  const { login } = useContext(AutenticacaoContext);
+
   const { temaEscolhido } = useContext(TemaContext);
 
   const estilo = estilos(temaEscolhido);
 
-  const { login } = useContext(AutenticacaoContext);
-
-  function logandoNoSistema() {
-    const resultado = login(email, senha);
+  async function logandoNoSistema() {
+    const resultado = await login(email, senha);
     if (resultado == "ok") {
       navigation.navigate("Principal");
     } else {

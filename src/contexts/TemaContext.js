@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
-import { escuro, claro } from "../estilosGlobais";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { escuro, claro } from "../estilosGlobais";
 
 export const TemaContext = createContext({});
 

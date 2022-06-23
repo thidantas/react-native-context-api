@@ -6,23 +6,23 @@ import {
   StatusBar,
   TouchableOpacity,
 } from "react-native";
-import { Produto } from "../../componentes/Produto";
-import { produtos } from "./produtos";
-import { estilos } from "./estilos";
 import { Feather } from "react-native-vector-icons";
 import MaterialCommunityIcons from "react-native-vector-icons/Feather";
-import { TemaContext } from "../../contexts/TemaContext";
-import { AutenticacaoContext } from "../../contexts/AutenticacaoContext";
 import { ProdutosContext } from "../../contexts/ProdutosContext";
+import { AutenticacaoContext } from "../../contexts/AutenticacaoContext";
+import { TemaContext } from "../../contexts/TemaContext";
+import { estilos } from "./estilos";
+import { produtos } from "./produtos";
+import { Produto } from "../../componentes/Produto";
 
 export default function Principal({ navigation }) {
-  const { temaEscolhido } = useContext(TemaContext);
+  const { quantidade, ultimosVistos } = useContext(ProdutosContext);
 
-  const estilo = estilos(temaEscolhido);
+  const { temaEscolhido } = useContext(TemaContext);
 
   const { usuario } = useContext(AutenticacaoContext);
 
-  const { quantidade, ultimosVistos } = useContext(ProdutosContext);
+  const estilo = estilos(temaEscolhido);
 
   return (
     <View style={estilo.container}>
@@ -60,7 +60,7 @@ export default function Principal({ navigation }) {
       <FlatList
         data={produtos}
         keyExtractor={(item) => Math.random()}
-        renderItem={({ item }) => <Produto item={item} adicionar={true} />}
+        renderItem={({ item }) => <Produto item={item} vizualizado={true} />}
         style={estilo.lista}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={() => (
@@ -72,7 +72,7 @@ export default function Principal({ navigation }) {
                   data={ultimosVistos}
                   keyExtractor={(item) => Math.random()}
                   renderItem={({ item }) => (
-                    <Produto item={item} adicionar={false} />
+                    <Produto item={item} vizualizado={false} />
                   )}
                   style={estilo.lista}
                   horizontal
