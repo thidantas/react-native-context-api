@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const AutenticacaoContext = createContext({});
 
 export function AutenticacaoProvider({ children }) {
-  const [usuario, setUsuario] = useState({});
+  const [usuario, setUsuario] = useState(null);
 
   function login(email, senha) {
     if (email == "thiago@email.com" && senha == 123) {
